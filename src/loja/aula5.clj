@@ -31,3 +31,32 @@
   (println (take 2 sequencia)))
 ; Função LAZY ( preguiçoso )
 
+
+(defn filtro1 [x]
+  (println "filtro 1" x)
+  x)
+
+(println (map filtro1 (range 10)))
+
+
+(defn filtro2 [x]
+  (println "filtro 2" x)
+  x)
+
+(println (map filtro2 (map filtro1 (range 10))))
+
+(->> (range 10)
+     (map filtro1)
+     (map filtro2)
+     println)
+
+; Chunks de 32 em 32
+(->> (range 50)
+     (map filtro1)
+     (map filtro2)
+     println)
+
+(->> (range 50)
+     (mapv filtro1)
+     (mapv filtro2)
+     println)
