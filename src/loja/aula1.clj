@@ -46,3 +46,16 @@
 
 (meu-mapa println ["daniela" "guilherme" "carlos" "paulo" "lucia" "ana"])
 (meu-mapa println ["daniela" false "carlos" "paulo" "lucia" "ana"])
+
+;TAIL RECURSION
+(defn meu-mapa
+  [funcao sequencia]
+  (let [primeiro (first sequencia)]
+    (if (not (nil? primeiro))
+      (do
+        (funcao primeiro)
+        (recur funcao (rest sequencia))))
+    ))
+
+(meu-mapa println (range 5000))
+
